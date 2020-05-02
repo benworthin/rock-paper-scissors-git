@@ -1,6 +1,7 @@
 import random
 
-# TODO add score functionality
+score_one = 0
+score_two = 0
 game = True
 valid_throws = ["rock", "paper", "scissors"]
 valid_answers = ["yes", "no"]
@@ -37,7 +38,6 @@ while game:
     valid_input = False
     while not valid_input:
         player_throw = input("Do you throw Rock, Paper, or Scissors? > ").lower()
-        print(player_throw)
         valid_input = check_if_valid_input(player_throw, valid_throws)
 
         if valid_input:
@@ -48,21 +48,21 @@ while game:
     computer_throw = generate_computer_throw()
     print(f"Computer threw {computer_throw}!")
 
-    if (player_throw == "rock" and computer_throw == "scissors") or (
-            player_throw == "paper" and computer_throw == "rock") or (
-            player_throw == "scissors" and computer_throw == "paper"):
+    if (player_throw == "rock" and computer_throw == "scissors") or (player_throw == "paper" and computer_throw == "rock") or (player_throw == "scissors" and computer_throw == "paper"):
+        score_one += 1
         print(player_one + " wins! Computer loses!\n")
-    elif (player_throw == "scissors" and computer_throw == "rock") or (
-            player_throw == "rock" and computer_throw == "paper") or (
-            player_throw == "paper" and computer_throw == "scissors"):
+    elif (player_throw == "scissors" and computer_throw == "rock") or (player_throw == "rock" and computer_throw == "paper") or (player_throw == "paper" and computer_throw == "scissors"):
+        score_two += 1
         print(player_one + " loses! Computer wins!\n")
     elif player_throw == computer_throw:
         print("It's a tie!\n")
 
+    print(f"{player_one}'s score: {score_one}\nComputer's score: {score_two}")
+
     # Reset variable
     valid_input = False
     while not valid_input:
-        play_again = input("Do you want to play again? > ").lower()
+        play_again = input("Do you want to play again? (Yes/No) > ").lower()
         valid_input = check_if_valid_input(play_again, valid_answers)
 
         if valid_input:
