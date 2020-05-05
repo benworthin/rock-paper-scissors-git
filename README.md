@@ -1,2 +1,2 @@
-# rock_paper_scissors
+# rock-paper-scissors
 A command line version of RPS.
